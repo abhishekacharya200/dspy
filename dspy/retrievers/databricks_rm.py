@@ -371,6 +371,7 @@ class DatabricksRM(dspy.Retrieve):
         if databricks_client_secret and databricks_client_id:
             # Use client ID and secret for authentication if they are provided
             databricks_client = WorkspaceClient(
+                host=databricks_endpoint,
                 client_id=databricks_client_id,
                 client_secret=databricks_client_secret,
             )
