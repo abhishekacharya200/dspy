@@ -1,15 +1,16 @@
 import json
 import os
 from dataclasses import dataclass
-from importlib.util import find_spec
 from typing import Any
 
 import requests
 
 import dspy
 from dspy.primitives.prediction import Prediction
+from dspy.utils.lazy_import import is_available
 
-_databricks_sdk_installed = find_spec("databricks.sdk") is not None
+# find_spec raises when the parent `databricks` package is missing, so use the safe helper.
+_databricks_sdk_installed = is_available("databricks.sdk")
 
 
 @dataclass
